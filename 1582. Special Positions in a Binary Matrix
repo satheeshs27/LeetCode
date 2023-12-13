@@ -1,0 +1,32 @@
+class Solution {
+    public int numSpecial(int[][] mat) {
+        int Row = mat.length;
+        int Col = mat[0].length;
+        int specialPositions = 0;
+
+        for(int i = 0; i < Row; i++){
+            for(int j = 0; j < Col; j++){
+                if(mat[i][j] == 1){
+                    if(checkIsSpecial(mat, i , j))
+                    specialPositions += 1;
+                    break;
+                }
+            }
+        }
+
+        return specialPositions;
+    }
+
+    public static boolean checkIsSpecial(int[][] mat, int Row, int Col){
+        for(int i = 0; i < mat[0].length; i++){
+            if(Col != i && mat[Row][i] == 1)
+                return false;
+        }
+        for(int i = 0; i < mat.length; i++){
+            if(Row != i && mat[i][Col] == 1)
+                return false;
+        }
+        System.out.println(Row + " " + Col);
+        return true;
+    }
+}
