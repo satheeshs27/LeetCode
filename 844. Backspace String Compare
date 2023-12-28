@@ -1,0 +1,21 @@
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+    
+        return backSpace(s).equals(backSpace(t));
+    }
+
+    static String backSpace(String temp)
+    {
+        StringBuilder sb = new StringBuilder("");
+
+        for(Character t : temp.toCharArray())
+        {
+            if(t == '#' && sb.isEmpty())
+                sb.deleteCharAt(sb.length() - 1);
+            else if(t != '#')
+                sb.append(t);
+        }
+        
+        return sb.toString();
+    }
+}
