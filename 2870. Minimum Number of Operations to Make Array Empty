@@ -1,0 +1,33 @@
+class Solution {
+    public int minOperations(int[] nums) {
+        int len = nums.length;
+        if(len == 0)
+            return -1;
+
+        int res = 0;
+        HashMap <Integer, Integer> hash = new HashMap<>();
+
+        for(int num : nums)
+            hash.put(num, hash.getOrDefault(num, 0) + 1);
+
+        for(Map.Entry<Integer, Integer> i : hash.entrySet()){
+            int key = i.getKey();
+            int val = i.getValue();
+            if(val == 1)
+                return -1;
+            if(val % 3 == 0)
+                res += (val / 3);
+            else if(val == 4)
+                res += (val / 2);
+            else{
+                if((val - 2) % 3 == 0)
+                    res += ((val - 2) / 3) + 1;
+                else
+                    res += ((val - 4) / 3) + 2;
+            }
+            System.out.println(key + " = " + val);
+        }
+
+        return res;
+        }
+    }
