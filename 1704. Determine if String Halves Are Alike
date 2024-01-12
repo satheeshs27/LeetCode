@@ -1,0 +1,20 @@
+class Solution {
+
+    static int alike(String t){
+        int vow = 0;
+        for(Character ch : t.toCharArray())
+        {
+            if(("aeiouAEIOU").contains(ch + ""))
+                vow++;
+        }
+        return vow;
+    }
+
+    public boolean halvesAreAlike(String s) {
+        int len = s.length();
+        String first = s.substring(0, len / 2);
+        s = s.substring(len / 2, len);
+        //System.out.print(alike(first) + "\n" + alike(s));
+        return alike(first) == alike(s);
+    }
+}
