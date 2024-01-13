@@ -1,0 +1,21 @@
+class Solution {
+    public int minSteps(String s, String t) {
+        if(s.equals(t))
+            return 0;
+        
+        int alp[] = new int[26];
+        int res   = 0;
+
+        for(int i = 0; i < s.length(); i++){
+            alp[s.charAt(i) - 'a']++;
+            alp[t.charAt(i) - 'a']--;
+        }
+
+        for(int i = 0; i < 26; i++){
+            if(alp[i] > 0)
+                res += alp[i];
+        }
+
+        return res;
+    }
+}
