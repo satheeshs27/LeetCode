@@ -1,0 +1,18 @@
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        
+        HashMap <Integer, Integer> map = new HashMap<>();
+
+        for(int i : arr){
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+        List<Integer> occurence = new ArrayList<>(map.values());
+        Collections.sort(occurence);
+
+        for(int i = 1; i < occurence.size(); i++){
+            if(occurence.get(i - 1) == occurence.get(i))
+                return false;
+        }
+        return true;
+    }
+}
