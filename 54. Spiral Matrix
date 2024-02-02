@@ -1,0 +1,36 @@
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+
+        List<Integer> res = new ArrayList<>();
+        int rowBegin = 0;
+        int rowEnd = matrix.length - 1;
+        int colBegin = 0;
+        int colEnd = matrix[0].length - 1;
+        int i;
+
+        while (true) {
+            for (i = colBegin; i <= colEnd; i++)
+                res.add(matrix[rowBegin][i]);
+            rowBegin++;
+            if (rowBegin > rowEnd || colBegin > colEnd)
+                break;
+            for (i = rowBegin; i <= rowEnd; i++)
+                res.add(matrix[i][colEnd]);
+            colEnd--;
+            if (rowBegin > rowEnd || colBegin > colEnd)
+                break;
+            for(i = colEnd; i >= colBegin; i--)
+                res.add(matrix[rowEnd][i]);
+            rowEnd--;
+            if (rowBegin > rowEnd || colBegin > colEnd)
+                break;
+            for(i = rowEnd; i >= rowBegin; i--)
+                res.add(matrix[i][colBegin]);
+            colBegin++;
+            if (rowBegin > rowEnd || colBegin > colEnd)
+                break;
+        }
+
+        return res;
+    }
+}
