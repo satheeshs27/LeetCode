@@ -1,0 +1,20 @@
+class Solution {
+    public String maximumOddBinaryNumber(String s) {
+        int zero = 0;
+        int one = -1;
+
+        for(char ch : s.toCharArray()){
+            if(ch == '0')
+                zero++;
+            else
+                one++;
+        }
+
+        String res = "";
+        res += "1".repeat(one);
+        res += "0".repeat(zero);
+        res += "1".repeat(1);
+
+        return res;
+    }
+}
